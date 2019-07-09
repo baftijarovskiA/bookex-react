@@ -1,0 +1,24 @@
+.box{
+    width: 100%;
+    text-align: center;
+    padding: 45px 0px;
+    margin: 5px;
+}
+.box-image{
+    background: rgba(66,134,244, 0.6);
+    background-position:center;
+    background-size :cover;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+.box-image:hover{
+    opacity: 1.0;
+}
+.box-text{
+    background: white;
+    padding: 5px 0px;
+    opacity: 1;
+    color: black;
+    /*color: #16367a;*/
+    font-family: "Arial";
+}
