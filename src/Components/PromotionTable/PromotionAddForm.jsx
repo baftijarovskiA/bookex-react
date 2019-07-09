@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import uuid from 'uuid';
 class PromotionAddForm extends Component{
 
     addPromotion(newPromotion){
@@ -16,7 +15,6 @@ class PromotionAddForm extends Component{
 
     onSubmit(e){
         const newPromotion = {
-            id: uuid.v1(),
             link: this.refs.link.value,
             picture: this.refs.picture.value
         };
