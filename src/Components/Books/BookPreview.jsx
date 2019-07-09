@@ -31,7 +31,7 @@ class BookPreview extends Component{
         const { name, authors, published, picture, description, fileUrl } = this.state.book;
 
         return (
-            <div className="container">
+            <div className="container alert alert-light p-4">
                 <div className="row">
                     <div className="col-md-8">
                         <h2>{name}</h2>

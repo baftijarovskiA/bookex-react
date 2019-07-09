@@ -52,7 +52,7 @@ class App extends Component{
                 <Route path="/profile/register" component={Register}/>
                 <Route path="/profile/login" component={Login}/>
                 {/*<Route path="/profile/edit" render={ props => (  )} />*/}
-s
+
                 <Route exact path="/promotions" component={PromotionTable}/>
                 <Route path="/promotions/create" component={PromotionAddForm}/>
                 <Route path="/promotions/edit/:id" component={PromotionEditForm}/>

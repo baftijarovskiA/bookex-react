@@ -15,6 +15,7 @@ class Home extends Component{
                     <hr/>
                     <Books value="3" />
                     <h3>Top categories</h3>
+                    <hr/>
                     <Categories value="3" />
                     <h3>Feeds and news</h3>
                     <hr/>
