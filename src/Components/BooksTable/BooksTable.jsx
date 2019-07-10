@@ -31,6 +31,7 @@ class BooksTable extends Component{
         axios.get(`http://localhost:8080/api/category/decrease/${categoryId}`);
         axios.delete(`http://localhost:8080/api/book/${id}`)
             .then(res => {
+                console.log(res);
                 this.setState({
                     books: [...this.state.books.filter(b => b.id !== id)]
                 });
@@ -45,7 +46,6 @@ class BooksTable extends Component{
                 <table className="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Category</th>
                         <th>Name</th>
                         <th>Picture</th>

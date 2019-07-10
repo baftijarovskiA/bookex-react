@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 class BooksEditForm extends Component{
 
     constructor(props){
@@ -56,7 +57,8 @@ class BooksEditForm extends Component{
             url: `http://localhost:8080/api/book/${this.state.id}`,
             data: newBook
         }).then( response =>{
-            this.props.history.push("/books/my");
+            console.log(response);
+            this.props.history.push("/profile/dashboard");
         }).catch(err => console.log(err));
     }
 
@@ -91,17 +93,6 @@ class BooksEditForm extends Component{
         console.log(this.state);
     }
 
-    handleChangeSelect(e){
-        const target = e.target;
-        const value = target.value;
-        console.log(value);
-
-        // this.setState({
-        //    category: this.getCategoryById(parseInt(value))
-        // });
-        // console.log(this.state);
-    }
-
 
     render() {
 
@@ -124,7 +115,7 @@ class BooksEditForm extends Component{
                     {/*<p>Select pdf file: <input type="file" ref="file" className="form-control mb-2" value={file}/></p>*/}
                     <input type="submit" value="Update" className="btn btn-outline-primary mb-2"/>
                 </form>
-                <p><a href="/books/my">Back to list</a></p>
+                <p><Link to="/profile/dashboard">Back to list</Link></p>
             </div>
         );
     }

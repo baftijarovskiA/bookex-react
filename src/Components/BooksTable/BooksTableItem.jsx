@@ -7,9 +7,8 @@ class BooksTableItem extends Component{
 
         return (
             <tr>
-                <td>{id}</td>
-                <td>{category.name}</td>
-                <td>{name}</td>
+                <td><Link to={"books/category/"+category.id}>{category.name}</Link></td>
+                <td><Link to={"books/preview/"+id}>{name}</Link></td>
                 <td><img src={picture} width="200px" alt="Book pdf cover"/></td>
                 <td>{authors}</td>
                 <td>
