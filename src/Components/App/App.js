@@ -25,6 +25,7 @@ import BooksAddForm from "../BooksTable/BooksAddForm";
 import BooksEditForm from "../BooksTable/BooksEditForm";
 import BooksCategory from "../Books/BooksCategory";
 import MessagesTable from "../MessagesTable/MessagesTable";
+import Dashboard from "../Dashboard/Dashboard";
 
 class App extends Component{
     render() {
@@ -51,7 +52,7 @@ class App extends Component{
                 <Route exact path="/profile" component={Profile}/>
                 <Route path="/profile/register" component={Register}/>
                 <Route path="/profile/login" component={Login}/>
-                {/*<Route path="/profile/edit" render={ props => (  )} />*/}
+                <Route path="/profile/dashboard" component={Dashboard}/>
 
                 <Route exact path="/promotions" component={PromotionTable}/>
                 <Route path="/promotions/create" component={PromotionAddForm}/>

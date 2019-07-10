@@ -7,12 +7,15 @@ class BookPreview extends Component{
         super(props);
         this.state = {
             book:'',
-            category:''
+            category:'',
+            role: '',
+            user: []
         };
     }
 
     componentWillMount() {
         this.getBook();
+        this.getUserDetails();
     }
 
     getBook(){
@@ -24,6 +27,14 @@ class BookPreview extends Component{
                     category: response.data.category
                 });
             });
+    }
+
+    getUserDetails(){
+        this.setState({
+            user: JSON.parse(localStorage.getItem("userdata")) || '',
+            role: JSON.parse(localStorage.getItem("userrole")) || ''
+        });
+
     }
 
     render() {
@@ -38,7 +49,9 @@ class BookPreview extends Component{
                         <p>{description}</p>
                         <br/>
                         <p><Link to={"/books/category/"+this.state.category.id}>{this.state.category.name}</Link></p>
-                        <a href={"http://localhost:8080/"+fileUrl} className="btn btn-secondary" download>Download</a>
+                        {
+                            this.state.user !== "" ? <a href={"http://localhost:8080/"+fileUrl} className="btn btn-secondary" download>Download</a> : <Link to="/profile/login">Login to download the book.</Link>
+                        }
                     </div>
                     <div className="col-md-4">
                         <img src={picture} className="w-100" alt="Pdf cover page"/><br/>

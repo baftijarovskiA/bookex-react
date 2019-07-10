@@ -28,7 +28,7 @@ class BooksTable extends Component{
     deleteBook(id){
         let book = this.state.books.filter(b => b.id === id);
         let categoryId = book[0].category.id;
-        axios.get(`http://localhost:8080/api/category/decrease/${categoryId}`)
+        axios.get(`http://localhost:8080/api/category/decrease/${categoryId}`);
         axios.delete(`http://localhost:8080/api/book/${id}`)
             .then(res => {
                 this.setState({
@@ -56,7 +56,7 @@ class BooksTable extends Component{
                     <tbody>
                     {
                         this.state.books.map( book =>
-                            <BooksTableItem key={book.id} book={book} deleteBook={this.deleteBook.bind(this, book.id)}/>
+                            parseInt(book.userId) === this.props.user ? <BooksTableItem key={book.id} book={book} deleteBook={this.deleteBook.bind(this, book.id)}/> : ''
                         )
                     }
                     </tbody>

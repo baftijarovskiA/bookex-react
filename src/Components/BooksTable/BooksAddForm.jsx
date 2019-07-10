@@ -6,12 +6,15 @@ class BooksAddForm extends Component{
         super();
         this.state = {
             categories:[],
-            selectedFile: null
+            selectedFile: null,
+            user: [],
+            role: ''
         }
     }
 
     componentWillMount() {
         this.getCategories();
+        this.getUserDetails();
     }
 
     getCategories(){
@@ -21,6 +24,12 @@ class BooksAddForm extends Component{
                     categories: response.data
                 });
             })
+    }
+    getUserDetails() {
+        this.setState({
+            user: JSON.parse(localStorage.getItem("userdata")) || '',
+            role: JSON.parse(localStorage.getItem("userrole")) || ''
+        });
     }
 
     addBook(newBook){
@@ -34,7 +43,7 @@ class BooksAddForm extends Component{
             url: 'http://localhost:8080/api/book',
             data: newBook
         }).then( response =>{
-            this.props.history.push("/books/my");
+            this.props.history.push("/profile/dashboard");
         }).catch(err => console.log(err));
     }
 
@@ -60,6 +69,7 @@ class BooksAddForm extends Component{
     storeValues(file){
         const newBook = {
             name: this.refs.name.value,
+            userId: this.state.user.id.toString(),
             authors: this.refs.authors.value,
             picture: this.refs.picture.value,
             published: this.refs.published.value,
@@ -91,11 +101,11 @@ class BooksAddForm extends Component{
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <div className="form-group">
                         <label htmlFor="name" className="d-none">Name</label>
-                        <input type="text" name="name" ref="name" placeholder="Name" className="form-control mb-2" />
+                        <input type="text" name="name" ref="name" placeholder="Name" className="form-control mb-2" required="required"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name" className="d-none">Authors</label>
-                        <input type="text" name="authors" ref="authors" placeholder="Authors" className="form-control mb-2" />
+                        <input type="text" name="authors" ref="authors" placeholder="Authors" className="form-control mb-2" required="required" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="name" className="d-none">Picture</label>
@@ -103,7 +113,7 @@ class BooksAddForm extends Component{
                     </div>
                     <div className="form-group">
                         <label htmlFor="name" className="d-none">Published</label>
-                        <input type="number" name="published" ref="published" placeholder="Published" className="form-control mb-2" />
+                        <input type="number" name="published" ref="published" placeholder="Published" className="form-control mb-2"  required="required"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name" className="d-none">Description</label>
@@ -119,11 +129,11 @@ class BooksAddForm extends Component{
                     </div>
                     <div className="form-group">
                         <label htmlFor="name" className="d-none">PDF file</label>
-                        <p>Select pdf file: <input type="file" name="file" ref="file" onChange={this.fileSelectedHandler} className="form-control mb-2"/></p>
+                        <p>Select pdf file: <input type="file" name="file" ref="file" onChange={this.fileSelectedHandler} className="form-control mb-2" required="required"/></p>
                     </div>
                     <input type="submit" value="Create" className="btn btn-outline-primary mb-2"/>
                 </form>
-                <p><a href="/books/my">Back to list</a></p>
+                <p><a href="/profile/dashboard">Back to list</a></p>
             </div>
         );
     }
